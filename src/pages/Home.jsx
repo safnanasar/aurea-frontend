@@ -41,7 +41,7 @@ function Home({ user, onLogout, cart, setCart }) {
     const [showHero, setShowHero] = useState(true) 
 
     useEffect(() => {
-        fetch('http://127.0.0.1:8000/api/products/')
+        fetch('https://aurea-backend-f6gt.onrender.com/api/products/')
             .then(r => r.json())
             .then(data => { setProducts(data); setFiltered(data) })
             .catch(err => console.error('Failed to fetch products:', err))
