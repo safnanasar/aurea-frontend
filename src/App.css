@@ -21,7 +21,7 @@ body {
   border-radius: 14px;
   background: #111;
   padding: 0 2rem;
-  height: 64px;
+  height: 72px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -29,7 +29,7 @@ body {
   position: sticky;
   top: 0;
   z-index: 100;
-  margin: 20px 20px 0;
+  margin: 20px 2px 0;
 }
 
 .logo {
@@ -174,7 +174,7 @@ body {
   align-items: center;
   gap: 8px;
   flex-wrap: wrap;
-  padding: 14px 20px;
+  padding: 10px 20px;
 }
 
 .cat {
@@ -928,5 +928,156 @@ body {
     color: #4a5e28;
     margin-top: 2px;
 }
+ 
+/* ===== RESPONSIVE ===== */
+
+ @media (max-width: 768px) {
+
+  /* Navbar */
+  .navbar {
+    flex-wrap: wrap;
+    height: auto;
+    padding: 10px 14px;
+    gap: 8px;
+    margin: 8px 8px 0;
+  }
+
+  .logo {
+  flex: 1;
+}
+
+  .search-box {
+    order: 3;
+    max-width: 100%;
+    width: 100%;
   
+  }
+
+  .nav-right {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: nowrap;
+
+  }
+
+  .nav-btn, .cart-btn, .logout-btn {
+    padding: 5px 10px;
+    font-size: 10px;
+  }
+
+  .user-chip {
+    font-size: 10px;
+    padding: 4px 10px;
+  }
+
+  /* Hero */
+  .hero {
+    flex-direction: column;
+    padding: 24px 16px;
+    align-items: center;
+    text-align: center;
+    gap: 24px;
+  }
+
+  .hero-left {
+    align-items: center;
+    gap: 16px;
+  }
+
+  .hero-text h1 {
+    font-size: 28px;
+  }
+
+  .hero-text p {
+    font-size: 10px;
+  }
+
+  .hero-btn {
+    padding: 10px 28px;
+    font-size: 11px;
+  }
+
+  .hero-offer {
+    width: 100%;
+    margin: 0;
+  }
+
+  .hero-img-wrap {
+    width: 100%;
+    align-items: center;
+  }
+
+  .hero-img {
+    width: 200px;
+    height: 220px;
+  }
+
+  .hero-stat-val {
+    font-size: 48px;
+  }
+
+  .hero-badge {
+    align-items: center;
+    padding: 8px;
+  }
+
+  /* Products */
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .card-img {
+    height: 140px;
+  }
+
+  .card-name {
+    font-size: 11px;
+  }
+
+  .card-price {
+    font-size: 12px;
+  }
+
+  .add-btn {
+    font-size: 9px;
+    padding: 0 10px;
+    height: 28px;
+  }
+
+  /* Trust bar */
+  .trust-item {
+    padding: 8px 12px;
+    font-size: 9px;
+  }
+
+  /* Footer */
+  .footer-top {
+    flex-direction: column;
+    padding: 2rem 1.5rem;
+  }
+
+  .footer-links {
+    gap: 1.5rem;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    gap: 6px;
+    text-align: center;
+    padding: 1rem 1.5rem;
+  }
+  .card-bottom {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+}
+
+.add-btn {
+  width: 100%;
+  font-size: 9px;
+  height: 28px;
+}
+}
   
