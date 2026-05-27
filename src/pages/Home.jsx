@@ -76,14 +76,18 @@ function Home({ user, onLogout, cart, setCart }) {
     const currentStat = STATS[statIdx % STATS.length]
 
     const handleAddToCart = (p) => {
-        const exists = cart.find(i => i.id === p.id)
-        if (exists) {
-            setCart(cart.map(i => i.id === p.id ? { ...i, qty: (i.qty || 1) + 1 } : i))
-        } else {
-            setCart([...cart, { ...p, qty: 1 }])
-        }
-        setToast(`${p.name} added to cart!`)
+    if (!user) {
+        window.location.href = '/login'
+        return
     }
+    const exists = cart.find(i => i.id === p.id)
+    if (exists) {
+        setCart(cart.map(i => i.id === p.id ? { ...i, qty: (i.qty || 1) + 1 } : i))
+    } else {
+        setCart([...cart, { ...p, qty: 1 }])
+    }
+    setToast(`${p.name} added to cart!`)
+}
 
     const toggleWishlist = (id) => {
         setWishlist(prev => prev.includes(id) ? prev.filter(x => x !== id) : [...prev, id])
