@@ -19,10 +19,13 @@ function Login({ setUser }) {
 
     const users = JSON.parse(localStorage.getItem("users")) || [];
 
-    const user = users.find(
-      (u) => u.email.toLowerCase() === input.toLowerCase() && u.password === password);
+   const user = users.find(
+    (u) =>
+    (u.email.toLowerCase() === input.toLowerCase() || u.number === input) &&
+      u.password === password
+);
 
-      
+
     if (!user) {
       setError("Invalid credentials");
       return;
