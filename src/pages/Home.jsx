@@ -97,7 +97,6 @@ function Home({ user, onLogout, cart, setCart }) {
         <div>
             <Navbar user={user} onLogout={onLogout} onSearch={setSearch} cart={cart} />
 
-            {/* Categories */}
             <div className="cats">
                 {['all', 'gents', 'ladies', 'electronics', 'kids', 'cosmetics', 'jewellery'].map(cat => (
                     <div
@@ -107,15 +106,12 @@ function Home({ user, onLogout, cart, setCart }) {
                             setCategory(cat)
                             if (cat !== 'all') setShowHero(false)
                             else setShowHero(true)
-                        }}
-                    >
-                
-                        {cat.toUpperCase()}
+                        }}>{cat.toUpperCase()}
                     </div>
                 ))}
             </div>
 
-            {/* Hero */}
+    
             {showHero && (
                 <div className="hero">
                     <div className="hero-left">
@@ -126,9 +122,7 @@ function Home({ user, onLogout, cart, setCart }) {
                             <button
                                 className="hero-btn"
                                 onClick={() => document.getElementById('products').scrollIntoView({ behavior: 'smooth' })}
-                            >
-                                EXPLORE NOW 
-                            </button>
+                            >EXPLORE NOW </button>
                         </div>
                         <div className="hero-badge">
                             <div className="hero-stat-val" key={currentStat.val}>
@@ -141,7 +135,7 @@ function Home({ user, onLogout, cart, setCart }) {
                         </div>
                     </div>
 
-                    {/* CENTER — Offer Banner */}
+                
                     <div className="hero-offer">
                         <div className="hero-offer-tag">✦ Limited Offer ✦</div>
                         <div className="hero-offer-body">
@@ -154,7 +148,7 @@ function Home({ user, onLogout, cart, setCart }) {
                         </div>
                     </div>
 
-                    {/* RIGHT — Sliding Image */}
+                
                     {products.length > 0 && (
                         <div className="hero-img-wrap">
                             <div className="hero-img-glow" />
@@ -186,7 +180,7 @@ function Home({ user, onLogout, cart, setCart }) {
                 </div>
             )}
 
-            {/* Trust Bar */}
+        
             {showHero && (
                 <div className="trust-bar">
                     {['🚚 Free Delivery', '🔄 30-Day Returns', '🔒 Secure Payment', '⭐ 4.9 Rated', '💬 24/7 Support'].map(item => (
@@ -195,7 +189,7 @@ function Home({ user, onLogout, cart, setCart }) {
                 </div>
             )}
 
-            {/* Product Section */}
+        
             <div className="section">
                 <div className="section-header">
                     <div className="section-title">✦ FEATURED PRODUCTS</div>
@@ -241,7 +235,7 @@ function Home({ user, onLogout, cart, setCart }) {
                 </div>
             </div>
 
-            {/* Footer */}
+            
             <footer className="footer">
                 <div className="footer-top">
                     <div className="footer-brand">
