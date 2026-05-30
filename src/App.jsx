@@ -13,7 +13,6 @@ function App() {
         localStorage.getItem('currentUser') || null
     )
 
-    // Global cart state
     const [cart, setCart] = useState([])
 
     const handleLogout = () => {
