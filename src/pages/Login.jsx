@@ -3,11 +3,11 @@ import { Link, useNavigate } from "react-router-dom";
 import Navbar from '../components/Navbar'
 
 function Login({ setUser }) {
-  const [input, setInput] = useState(""); // email or phone
+  const [input, setInput] = useState(""); 
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
-  const navigate = useNavigate(); // <-- Missing line
+  const navigate = useNavigate(); 
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -20,9 +20,9 @@ function Login({ setUser }) {
     const users = JSON.parse(localStorage.getItem("users")) || [];
 
     const user = users.find(
-      (u) => u.email === input && u.password === password
-    );
+      (u) => u.email.toLowerCase() === input.toLowerCase() && u.password === password);
 
+      
     if (!user) {
       setError("Invalid credentials");
       return;
