@@ -14,46 +14,39 @@ function Register() {
     const handleRegister = (e) => {
         e.preventDefault();
 
-    // Validate all fields
+    
     if (!name || !email || !number || !password || !confirmPassword) {
       setError("Please fill all fields");
       return;
     }
 
-    // Validate password match
+
     if (password !== confirmPassword) {
         setError("Passwords do not match");
       return;
     }
 
-    // Get existing users
+    
     const users = JSON.parse(localStorage.getItem("users")) || [];
 
-    // Check if email already exists
-    const exists = users.find((u) => u.email === email);
+
+    const exists = users.find((u) => u.email.toLowerCase() === email.toLowerCase());
     if (exists) {
       setError("User already exists");
       return;
     }
 
-    // Save new user
+    
     users.push({
       name,
-      email,
+      email: email.toLowerCase(),
       number,
       password,
     });
 
     localStorage.setItem("users", JSON.stringify(users));
-    // Redirect to login page
     navigate("/login");
   };
-
-
-
-
-
-
 
     return (
         <div className="auth-page">
@@ -79,7 +72,7 @@ function Register() {
                 />
                 <input
                     className="auth-input"
-                    type="decimal"
+                    type="tel"
                     placeholder="Number"
                     value={number}
                     onChange={(e) => setNumber(e.target.value)}
