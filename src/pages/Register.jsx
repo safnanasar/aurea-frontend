@@ -30,7 +30,7 @@ function Register() {
     const users = JSON.parse(localStorage.getItem("users")) || [];
 
 
-    const exists = users.find((u) => u.email.toLowerCase() === email.toLowerCase());
+    const exists = users.find((u) => u.email.toLowerCase() === email.toLowerCase() || u.number === number);
     if (exists) {
       setError("User already exists");
       return;
