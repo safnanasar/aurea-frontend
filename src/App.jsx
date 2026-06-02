@@ -10,7 +10,7 @@ import './App.css'
 
 function App() {
     const [user, setUser] = useState(
-        localStorage.getItem('currentUser') || null
+        localStorage.getItem('currentUser') 
     )
 
     const [cart, setCart] = useState([])
