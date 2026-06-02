@@ -8,7 +8,7 @@ function Payment({ cart = [], setCart }) {
     const [method, setMethod] = useState('card')
     const [form, setForm] = useState({
         name: '', card: '', expiry: '', cvv: '',
-        upi: '', wallet: ''
+        cod: '', wallet: ''
     })
     const [errors, setErrors] = useState({})
 
@@ -32,7 +32,7 @@ function Payment({ cart = [], setCart }) {
             if (form.expiry.length !== 5) e.expiry = 'Enter valid expiry'
             if (form.cvv.length !== 3) e.cvv = 'Enter valid CVV'
         }
-        if (method === 'upi' && !form.upi.includes('@')) e.upi = 'Enter valid UPI ID'
+        // No validation needed for COD or wallet
         return e
     }
 
@@ -50,7 +50,11 @@ function Payment({ cart = [], setCart }) {
                 <div className="pay-success-title">Order Confirmed</div>
                 <div className="pay-success-sub">Thank you for shopping with Auréa</div>
                 <div className="pay-success-amount">₹{subtotal.toLocaleString('en-IN')}</div>
-                <div className="pay-success-note">Your order will arrive in 3–5 business days</div>
+                <div className="pay-success-note">
+                    {method === 'cod'
+                        ? 'Pay ₹' + subtotal.toLocaleString('en-IN') + ' upon delivery'
+                        : 'Your order will arrive in 3–5 business days'}
+                </div>
                 <div className="pay-order-id">Order #{Math.floor(Math.random() * 900000 + 100000)}</div>
                 <button className="pay-home-btn" onClick={() => navigate('/')}>BACK TO SHOP</button>
             </div>
@@ -69,13 +73,13 @@ function Payment({ cart = [], setCart }) {
 
                     {/* Method Tabs */}
                     <div className="pay-methods">
-                        {['card', 'upi', 'wallet'].map(m => (
+                        {['card', 'cod', 'wallet'].map(m => (
                             <button
                                 key={m}
                                 className={`pay-method-btn ${method === m ? 'active' : ''}`}
                                 onClick={() => setMethod(m)}
                             >
-                                {m === 'card' ? '💳 Card' : m === 'upi' ? '📱 UPI' : '👜 Wallet'}
+                                {m === 'card' ? '💳 Card' : m === 'cod' ? '🏠 Cash on Delivery' : '👜 Wallet'}
                             </button>
                         ))}
                     </div>
@@ -108,13 +112,13 @@ function Payment({ cart = [], setCart }) {
                         </div>
                     )}
 
-                    {/* UPI Form */}
-                    {method === 'upi' && (
+                    {/* Cash on Delivery */}
+                    {method === 'cod' && (
                         <div className="pay-form">
-                            <div className="pay-field">
-                                <label>UPI ID</label>
-                                <input name="upi" placeholder="yourname@upi" value={form.upi} onChange={handleChange} />
-                                {errors.upi && <span className="pay-error">{errors.upi}</span>}
+                            <div className="pay-cod-info" style={{ padding: '20px', textAlign: 'center', opacity: 0.8 }}>
+                                <div style={{ fontSize: '2rem', marginBottom: '10px' }}>🏠</div>
+                                <p>Pay <strong>₹{subtotal.toLocaleString('en-IN')}</strong> in cash when your order arrives.</p>
+                                <p style={{ fontSize: '0.85rem', marginTop: '8px' }}>No advance payment required.</p>
                             </div>
                         </div>
                     )}
@@ -137,7 +141,7 @@ function Payment({ cart = [], setCart }) {
                     )}
 
                     <button className="pay-btn" onClick={handlePay}>
-                        PAY ₹{subtotal.toLocaleString('en-IN')}
+                        {method === 'cod' ? 'PLACE ORDER' : `PAY ₹${subtotal.toLocaleString('en-IN')}`}
                     </button>
 
                     <div className="pay-secure">🔒 256-bit SSL Encrypted · Safe & Secure</div>
